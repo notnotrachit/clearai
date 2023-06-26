@@ -17,19 +17,21 @@ function Page() {
       return console.log(error);
     }
 
-    // else successful
     console.log(result);
-    return router.push("/admin");
+    return router.push("/");
   };
   return (
-    <div className="wrapper">
+    <div className="wrapper flex justify-center">
       <div className="form-wrapper">
-        <h1 className="mt-60 mb-30">Sign up</h1>
+        <h1 className="mt-60 mb-30 text-3xl text-center text-teal-300 font-bold">
+          Sign in
+        </h1>
         <form onSubmit={handleForm} className="form">
           <label htmlFor="email">
             <p>Email</p>
             <input
               onChange={(e) => setEmail(e.target.value)}
+              className="px-4 py-2 rounded-xl text-black"
               required
               type="email"
               name="email"
@@ -41,6 +43,7 @@ function Page() {
             <p>Password</p>
             <input
               onChange={(e) => setPassword(e.target.value)}
+              className="px-4 py-2 rounded-xl text-black"
               required
               type="password"
               name="password"
@@ -48,7 +51,20 @@ function Page() {
               placeholder="password"
             />
           </label>
-          <button type="submit">Sign up</button>
+          <div className="flex justify-center">
+            <button
+              className="bg-teal-500 my-5 px-3 py-1 rounded-xl"
+              type="submit"
+            >
+              Sign in
+            </button>
+          </div>
+          <p>
+            Don&apos;t have an account?{" "}
+            <a href="/signup" className="text-teal-300">
+              Sign Up here
+            </a>
+          </p>
         </form>
       </div>
     </div>

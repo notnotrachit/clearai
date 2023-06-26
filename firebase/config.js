@@ -1,4 +1,9 @@
 import { initializeApp, getApps } from "firebase/app";
+import "firebase/firestore";
+import firebase from "firebase/compat/app";
+import { getDatabase } from "firebase/database";
+import { getFirestore } from "firebase/firestore";
+
 
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -8,7 +13,10 @@ const firebaseConfig = {
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
   measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
+  databaseURL: process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL,
 };
-let firebase_app =  getApps().length === 0 ? initializeApp(firebaseConfig) : getApps()[0];
+const firebase_app = firebase.initializeApp(firebaseConfig);
+
 
 export default firebase_app;
+export const db = firebase_app.firestore;
